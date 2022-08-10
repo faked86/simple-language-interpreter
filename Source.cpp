@@ -380,6 +380,7 @@ Expression *scan(std::ifstream &input) {
             Expression* value = scan(input);
             return new set(id, value);
     }*/
+    throw "No such expression";
 };
 
 int main() {
@@ -396,7 +397,7 @@ int main() {
         eValueted = expr->eval(env);
         eValueted->print(output);
     } catch (const char *error) {
-        std::cout << error;
+        std::cerr << error;
         output << "ERROR";
     }
 
