@@ -10,8 +10,10 @@ But this program is working...
 You can try and help me figure out syntax of this languge :)
 
 ## Usage
-Insert desired program into `input.txt`
-Compile `source.cpp`. Launch program.
+1. Compile `source.cpp` via g++ for example.
+2. Insert desired program into `input.txt`.
+3. Launch program.
+
 You will get `output.txt` with result of your program in it.
 
 ## Syntax
