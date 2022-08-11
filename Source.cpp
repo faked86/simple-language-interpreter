@@ -103,6 +103,40 @@ public:
     }
 };
 
+class reduce : public Expression {
+    Expression *e1;
+    Expression *e2;
+
+public:
+    Expression *eval(std::unordered_map<std::string, Expression *> env) {
+        return new val(getValue(e1->eval(env)) - getValue(e2->eval(env)));
+    }
+
+    reduce(Expression *first, Expression *second)
+        : e1(first), e2(second) {
+    }
+
+    ~reduce() {
+        delete e1;
+        delete e2;
+    }
+
+    int getI() { throw "add is bad class to call getI"; }
+    std::string getId() { throw "add is bad class to call getId"; }
+    Expression *getBody() { throw "add is bad class to call getBody"; }
+    std::unordered_map<std::string, Expression *> getOwnEvn() { throw "add is bad class to call getOwnEvn"; }
+
+    void setOwnEvn(std::unordered_map<std::string, Expression *> env) { return; }
+
+    void print(std::ofstream &output) {
+        output << "(reduce ";
+        e1->print(output);
+        output << " ";
+        e2->print(output);
+        output << ")";
+    }
+};
+
 class ifexpr : public Expression {
     Expression *e1;
     Expression *e2;
@@ -326,6 +360,11 @@ Expression *scan(std::ifstream &input) {
         Expression *e1 = scan(input);
         Expression *e2 = scan(input);
         return new add(e1, e2);
+    }
+    if (type == "reduce") {
+        Expression *e1 = scan(input);
+        Expression *e2 = scan(input);
+        return new reduce(e1, e2);
     }
     if (type == "if") {
         Expression *e1 = scan(input);

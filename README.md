@@ -13,3 +13,16 @@ You can try and help me figure out syntax of this languge :)
 Insert desired program into `input.txt`
 Compile `source.cpp`. Launch program.
 You will get `output.txt` with result of your program in it.
+
+## Syntax
+
+expressions(exps):
+
+    - "(val <int>)"
+    - "(var <id>)"
+    - "(add expr1 expr2)" 
+    - "(if expr1 expr2 then expr_then else expr_else)" if expr1 > expr2 then expr_then else expr_else
+    - "(let <id> = expr in body_expr)"
+    - "(function <id>  body_expr)"
+    - "(call f_expr arg_expr)"
+    - "(reduce expr1 expr2)"

@@ -33,3 +33,7 @@
 
 # Results of execution
 output.txt
+
+# VSCode
+.vscode
+Source
