@@ -103,7 +103,7 @@ public:
     }
 };
 
-class reduce : public Expression {
+class substraction : public Expression {
     Expression *e1;
     Expression *e2;
 
@@ -112,11 +112,11 @@ public:
         return new val(getValue(e1->eval(env)) - getValue(e2->eval(env)));
     }
 
-    reduce(Expression *first, Expression *second)
+    substraction(Expression *first, Expression *second)
         : e1(first), e2(second) {
     }
 
-    ~reduce() {
+    ~substraction() {
         delete e1;
         delete e2;
     }
@@ -129,7 +129,7 @@ public:
     void setOwnEvn(std::unordered_map<std::string, Expression *> env) { return; }
 
     void print(std::ofstream &output) {
-        output << "(reduce ";
+        output << "(sub ";
         e1->print(output);
         output << " ";
         e2->print(output);
@@ -361,10 +361,10 @@ Expression *scan(std::ifstream &input) {
         Expression *e2 = scan(input);
         return new add(e1, e2);
     }
-    if (type == "reduce") {
+    if (type == "sub") {
         Expression *e1 = scan(input);
         Expression *e2 = scan(input);
-        return new reduce(e1, e2);
+        return new substraction(e1, e2);
     }
     if (type == "if") {
         Expression *e1 = scan(input);
@@ -439,8 +439,6 @@ int main() {
         std::cerr << error;
         output << "ERROR";
     }
-
-    // std::cin.get();
 
     delete expr;
     delete eValueted;

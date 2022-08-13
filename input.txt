@@ -1,3 +1,5 @@
-(let a = (val 10) in (
-	add (let a = (val 20) in (var a)) (var a))
+(
+	let a = (val 10) in (
+		add (let a = (val 20) in (var a)) (var a)
+	)
 )
