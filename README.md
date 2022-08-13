@@ -4,7 +4,7 @@ Interpreter of simple language.
 ## Description
 University project...
 
-it's interpretor of simple language maded up by my university teacher.
+it's interpretor of simple language maded up by one of my university teacher's student.
 It was so long ago, I can't remember it's syntax.
 But this program is working...
 You can try and help me figure out syntax of this languge :)
