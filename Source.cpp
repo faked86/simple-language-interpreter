@@ -103,7 +103,7 @@ public:
     }
 };
 
-class substraction : public Expression {
+class subtraction : public Expression {
     Expression *e1;
     Expression *e2;
 
@@ -112,11 +112,11 @@ public:
         return new val(getValue(e1->eval(env)) - getValue(e2->eval(env)));
     }
 
-    substraction(Expression *first, Expression *second)
+    subtraction(Expression *first, Expression *second)
         : e1(first), e2(second) {
     }
 
-    ~substraction() {
+    ~subtraction() {
         delete e1;
         delete e2;
     }
@@ -364,7 +364,7 @@ Expression *scan(std::ifstream &input) {
     if (type == "sub") {
         Expression *e1 = scan(input);
         Expression *e2 = scan(input);
-        return new substraction(e1, e2);
+        return new subtraction(e1, e2);
     }
     if (type == "if") {
         Expression *e1 = scan(input);
